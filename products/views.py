@@ -24,3 +24,4 @@ class ProductListView(ListAPIView):
     serializer_class = ProductSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = ProductFilter
+
