@@ -14,12 +14,12 @@ class NewsTest(APITestCase):
             Schedule(
                 work_day="monday",
                 start_work="2024-02-04,08:00",
-                end_time="2024-02-04,16:00",
+                end_work="2024-02-04,16:00",
             ),
             Schedule(
                 work_day="monday",
                 start_work="2023-02-04 08:00:00",
-                end_time="2023-02-04 16:00:00",
+                end_work="2023-02-04 16:00:00",
             ),
         ]
         Schedule.objects.bulk_create(schedule)

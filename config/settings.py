@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # apps
     "news",
     "other",
+    "products.apps.ProductsConfig",
 ]
 
 MIDDLEWARE = [
