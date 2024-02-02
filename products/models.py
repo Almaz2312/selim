@@ -6,6 +6,9 @@ class Category(models.Model):
     image = models.ImageField(upload_to="category")
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     type = models.CharField(max_length=255)
@@ -19,6 +22,9 @@ class Product(models.Model):
         related_name="product",
     )
 
+    def __str__(self):
+        return self.type
+
 
 class Feedback(models.Model):
     name = models.CharField(max_length=100)
@@ -26,8 +32,14 @@ class Feedback(models.Model):
     image = models.ImageField(upload_to="feedbacks")
     body = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class OurWorks(models.Model):
     image = models.ImageField(upload_to="uploads")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.id
