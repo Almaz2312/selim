@@ -6,7 +6,11 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+<<<<<<< HEAD
 python = "^3.10.12"
+=======
+python = "^3.10"
+>>>>>>> 7dee9927d27358e06d372f3b86b5b217f77d49be
 django = "^5.0.1"
 djangorestframework = "^3.14.0"
 psycopg2-binary = "^2.9.9"

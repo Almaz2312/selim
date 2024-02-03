@@ -663,13 +663,13 @@ six = ">=1.5"
 
 [[package]]
 name = "pytz"
-version = "2023.4"
+version = "2024.1"
 description = "World timezone definitions, modern and historical"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pytz-2023.4-py2.py3-none-any.whl", hash = "sha256:f90ef520d95e7c46951105338d918664ebfd6f1d995bd7d153127ce90efafa6a"},
-    {file = "pytz-2023.4.tar.gz", hash = "sha256:31d4583c4ed539cd037956140d695e42c033a19e984bfce9964a3f7d59bc2b40"},
+    {file = "pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319"},
+    {file = "pytz-2024.1.tar.gz", hash = "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812"},
 ]
 
 [[package]]
@@ -931,5 +931,10 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [metadata]
 lock-version = "2.0"
+<<<<<<< HEAD
 python-versions = "^3.10.12"
 content-hash = "9c0cd18db4f1ce80293bab26c22161de271c089e7af13863956a61c3ba73cd0f"
+=======
+python-versions = "^3.10"
+content-hash = "99415b309b924e40ba99d87921c693d8e26369c2cb83ca1de9f9fb8e6c4e4c55"
+>>>>>>> 7dee9927d27358e06d372f3b86b5b217f77d49be
