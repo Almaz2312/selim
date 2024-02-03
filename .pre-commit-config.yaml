@@ -6,6 +6,7 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+        exclude: .db_selim
 -   repo: https://github.com/psf/black
     rev: 22.10.0
     hooks:
@@ -20,7 +21,7 @@ repos:
     hooks:
       - id: mypy
         args: [--ignore-missing-imports, --no-strict-optional]
-        exclude: "[a-zA-Z]*/(migrations)/(.)*|config_env.py"
+        exclude: "[a-zA-Z]*/(migrations)/(.)*|.db_selim"
         additional_dependencies:
           - "django-stubs"
           - "djangorestframework-stubs"
