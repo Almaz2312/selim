@@ -1,5 +1,6 @@
 from django_filters import rest_framework as filters  # type: ignore
 from rest_framework.generics import ListAPIView  # type: ignore
+
 from .filters import ProductFilter
 from .models import Category, Feedback, Product
 from .serializers import CategorySerializer, FeedbackListSerializer, ProductSerializer

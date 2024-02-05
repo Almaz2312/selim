@@ -17,11 +17,12 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -37,7 +38,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include("news.urls")),
     path("api/v1/", include("other.urls")),
-    path("api/products/", include("products.urls")),
     path("docs/", schema_view.with_ui("swagger")),
+    path("api/products/", include("products.urls"))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
