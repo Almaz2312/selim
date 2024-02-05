@@ -143,7 +143,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 JAZZMIN_SETTINGS = {
     "site_title": "Моя административная панель",  # Название вашего сайта
     "site_header": "Моя административная панель",  # Заголовок в шапке админки
@@ -158,3 +157,4 @@ SWAGGER_SETTINGS = {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
     }
 }
+
