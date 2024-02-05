@@ -10,16 +10,25 @@ class Category(models.Model):
         return self.name
 
 
+class ProductImage(models.Model):
+    image = models.ImageField(upload_to="products")
+    product = models.ForeignKey(
+        "Product", on_delete=models.CASCADE, related_name="images"
+    )
+
+    def __str__(self):
+        return f"{self.product_id}'s image"
+
+
 class Product(models.Model):
     type = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to="products")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(
         "Category",
         on_delete=models.CASCADE,
-        related_name="product",
+        related_name="products",
     )
 
     def __str__(self):
