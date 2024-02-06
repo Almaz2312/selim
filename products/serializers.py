@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from .models import Product, ProductImage
+from .models import Feedback, Product, ProductImage
+
+
+class FeedbackListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = "__all__"
 
 
 class ProductImageSerializer(serializers.ModelSerializer):

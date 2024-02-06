@@ -3,7 +3,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Feedback, Product
-from .serializers import ProductSerializer
+from .serializers import FeedbackListSerializer, ProductSerializer
+
+
+class FeedbackListView(ListAPIView):
+    model = Feedback
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackListSerializer
 
 
 class ProductListView(APIView):
