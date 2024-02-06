@@ -5,8 +5,6 @@ from .models import Category, Feedback, Product
 from .serializers import CategorySerializer, FeedbackListSerializer, ProductSerializer
 
 
-
-
 class CategoryListView(ListAPIView):
     model = Category
     queryset = Category.objects.all()
