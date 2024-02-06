@@ -26,4 +26,4 @@ urlpatterns: list[list[URLPattern] | URLResolver] = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += [static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)]
+    urlpatterns.append(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
