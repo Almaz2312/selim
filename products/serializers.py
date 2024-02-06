@@ -3,6 +3,7 @@ from rest_framework import serializers  # type: ignore
 from .models import Category, Feedback, Product, ProductImage
 
 
+
 class FeedbackListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
