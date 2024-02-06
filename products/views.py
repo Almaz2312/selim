@@ -2,8 +2,14 @@ from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Feedback, Product
-from .serializers import FeedbackListSerializer, ProductSerializer
+from .models import Category, Feedback, Product
+from .serializers import CategorySerializer, FeedbackListSerializer, ProductSerializer
+
+
+class CategoryListView(ListAPIView):
+    model = Category
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 class FeedbackListView(ListAPIView):
