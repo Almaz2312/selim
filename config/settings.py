@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 import environ
@@ -25,7 +25,8 @@ environ.Env.read_env(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+# SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = "django-insecure-^4oar0%zo1tyf7=@2axg3mn)@&1h&(ev0+efje)tn&@cxj6)zo"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
@@ -36,6 +37,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,11 +47,18 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "products.apps.ProductsConfig",
+    "drf_yasg",
+    "phonenumber_field",
+    "corsheaders",
+    # apps
+    "news",
+    "other",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -125,11 +134,27 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_ROOT = BASE_DIR / "media"
+JAZZMIN_SETTINGS = {
+    "site_title": "Моя административная панель",  # Название вашего сайта
+    "site_header": "Моя административная панель",  # Заголовок в шапке админки
+    "site_logo": "/static/admin/img/logo.png",  # Логотип вашего сайта
+}
 
-MEDIA_URL = "/media/"
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:3000"]
+CORS_ALLOWED_METHODS = ["POST", "GET", "OPTIONS", "PUT", "PATCH", "DELETE"]
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
+    }
+}
