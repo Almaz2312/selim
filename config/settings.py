@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     "drf_yasg",
     "phonenumber_field",
     "corsheaders",
+    "django_filters",
     # apps
     "news",
     "other",
-    "django_filters",
     "products.apps.ProductsConfig",
 ]
 
