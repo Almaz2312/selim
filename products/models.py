@@ -28,16 +28,6 @@ class ProductImage(models.Model):
         verbose_name_plural = "Изображения продуктов"
 
 
-class ProductImage(models.Model):
-    image = models.ImageField(upload_to="products")
-    product = models.ForeignKey(
-        "Product", on_delete=models.CASCADE, related_name="images"
-    )
-
-    def __str__(self):
-        return f"{self.product_id} product's image"
-
-
 class Product(models.Model):
     type = models.CharField(max_length=255)
     description = models.TextField()
