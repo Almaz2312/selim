@@ -16,11 +16,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    images = serializers.SerializerMethodField()
-
-    def get_images(self, obj):
-        request = self.context["request"]
-        return [request.build_absolute_uri(img.image.url) for img in obj.images.all()]
+    images = ProductImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
