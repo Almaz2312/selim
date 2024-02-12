@@ -17,7 +17,7 @@ class ProductImage(models.Model):
     )
 
     def __str__(self):
-        return f"{self.product_id}'s image"
+        return f"{self.product_id} product's image"
 
 
 class Product(models.Model):
