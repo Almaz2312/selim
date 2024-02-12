@@ -9,6 +9,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
 
 class ProductImage(models.Model):
     image = models.ImageField(upload_to="products")
@@ -18,6 +22,10 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"{self.product_id} product's image"
+
+    class Meta:
+        verbose_name = "Изображение продукта"
+        verbose_name_plural = "Изображения продуктов"
 
 
 class Product(models.Model):
@@ -34,6 +42,10 @@ class Product(models.Model):
     def __str__(self):
         return self.type
 
+    class Meta:
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"
+
 
 class Feedback(models.Model):
     name = models.CharField(max_length=100)
@@ -44,6 +56,10 @@ class Feedback(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
+
 
 class OurWorks(models.Model):
     image = models.ImageField(upload_to="uploads")
@@ -52,3 +68,7 @@ class OurWorks(models.Model):
 
     def __str__(self):
         return self.id
+
+    class Meta:
+        verbose_name = "Наша работа"
+        verbose_name_plural = "Наши работы"
