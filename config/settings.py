@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # apps
     "news",
     "other",
+    "django_filters",
     "products.apps.ProductsConfig",
 ]
 
