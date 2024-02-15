@@ -1,7 +1,7 @@
+from django_filters import rest_framework as filters
 from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
+from .filters import ProductFilter
 from .models import Category, Feedback, Product
 from .serializers import CategorySerializer, FeedbackListSerializer, ProductSerializer
 
@@ -18,19 +18,9 @@ class FeedbackListView(ListAPIView):
     serializer_class = FeedbackListSerializer
 
 
-class ProductListView(APIView):
-    def get(self, request):
-        p = Product.objects.all().prefetch_related("images")
-
-        return Response(
-            ProductSerializer(p, many=True, context={"request": request}).data
-        )
-
-
-class ProductByCategory(APIView):
-    def get(self, request, category):
-        p = Product.objects.filter(category__name=category).prefetch_related("images")
-
-        return Response(
-            ProductSerializer(p, many=True, context={"request": request}).data
-        )
+class ProductListView(ListAPIView):
+    model = Product
+    queryset = Product.objects.all().prefetch_related("images")
+    serializer_class = ProductSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = ProductFilter
