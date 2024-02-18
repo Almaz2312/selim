@@ -49,9 +49,9 @@ class Product(models.Model):
 
 class Feedback(models.Model):
     name = models.CharField(max_length=100)
-    type = models.CharField(max_length=255)
     image = models.ImageField(upload_to="feedbacks")
     body = models.TextField()
+    type = models.ForeignKey("Product", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
