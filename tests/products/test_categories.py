@@ -1,16 +1,15 @@
 import pytest
-from rest_framework import serializers
 
-from products.models import Category, Product
+from .factories import CategoryFactory, ProductFactory
 
 
 @pytest.mark.django_db
 def test_get_categories(api_client):
-    c = Category.objects.create(name="шлагбаум", description="test")
-    c2 = Category.objects.create(name="other", description="test")
-    p1 = Product.objects.create(type="ШЛАГБАУМЫ 1", description="test", category=c)
-    p2 = Product.objects.create(type="ШЛАГБАУМЫ 2", description="test", category=c)
-    p3 = Product.objects.create(type="other", description="test", category=c2)
+    c = CategoryFactory()
+    c2 = CategoryFactory()
+    p1 = ProductFactory(category=c)
+    p2 = ProductFactory(category=c)
+    p3 = ProductFactory(category=c2)
 
     response = api_client.get("/api/products/categories/")
     assert response.status_code == 200
@@ -21,12 +20,9 @@ def test_get_categories(api_client):
     assert response.json()[0]["id"] == c.id
     assert response.json()[0]["description"] == c.description
     assert response.json()[0]["name"] == c.name
-    assert response.json()[0]["image"] == serializers.ImageField().to_representation(
-        c.image
-    )
+    assert c.image.url in response.json()[0]["image"]
+
     assert response.json()[1]["id"] == c2.id
     assert response.json()[1]["description"] == c2.description
     assert response.json()[1]["name"] == c2.name
-    assert response.json()[1]["image"] == serializers.ImageField().to_representation(
-        c2.image
-    )
+    assert c2.image.url in response.json()[1]["image"]
