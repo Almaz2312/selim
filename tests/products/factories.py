@@ -13,7 +13,7 @@ class CategoryFactory(DjangoModelFactory):
 
     id = factory.Sequence(lambda n: n)
     name = factory.Sequence(lambda n: "category{}".format(n))
-    image = factory.django.ImageField()
+    image = factory.Faker("image_url")
     description = factory.Sequence(lambda n: "sequence{}".format(n))
 
 
@@ -37,7 +37,7 @@ class FeedbackFactory(DjangoModelFactory):
 
     id = factory.Sequence(lambda n: n)
     name = factory.Sequence(lambda n: "feedback{}".format(n))
-    image = factory.django.ImageField()
+    image = factory.Faker("image_url")
     body = factory.Sequence(lambda n: "body{}".format(n))
     type = factory.SubFactory(ProductFactory)
 
@@ -46,5 +46,5 @@ class ProductImageFactory(DjangoModelFactory):
     class Meta:
         model = ProductImage
 
-    image = factory.django.ImageField()
+    image = factory.Faker("image_url")
     product = factory.SubFactory(ProductFactory)
