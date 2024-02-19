@@ -1,14 +1,20 @@
 from django.db import models
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField  # type: ignore
 
 
 class Schedule(models.Model):
     work_day = models.CharField(max_length=500)  # type: ignore
     start_work = models.DateTimeField()  # type: ignore
-    end_time = models.DateTimeField()  # type: ignore
+    end_work = models.DateTimeField()  # type: ignore
 
     def __str__(self) -> str:
         return self.work_day
+
+    def save(self, *args, **kwargs):
+        self.start_work = timezone.now()
+        self.end_work = timezone.now() + timezone.timedelta(hours=8)
+        super().save(*args, **kwargs)
 
 
 class PhoneNumbers(models.Model):
