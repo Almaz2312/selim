@@ -32,3 +32,6 @@ repos:
           - "django-cors-headers"
           - "django-filter"
           - "celery"
+          - "django-jazzmin"
+          - "django-phonenumber-field"
+          - "phonenumbers"
